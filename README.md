@@ -30,6 +30,13 @@ Code Quality
 
 Service logs are proposed to be stored in a db, so to access them easily: it is propose to store them in a an unstructured way (what is called a data lake)
 
+ To do so:
+ 
+ 0. It is created an spark cluster on EMR, and from it run the etl.py. This file do this:
+ 1. First the songs and log data are extracted
+ 2. Then, it is used spark to transform the data in an schema 
+ 3. After that, the files are s
+
 ## 2. State and justify your database schema design and ETL pipeline.
 
 In this uml class diagram it is approached the start schema proposed.
