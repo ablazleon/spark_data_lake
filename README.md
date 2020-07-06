@@ -4,7 +4,7 @@
 ***Credits***
 Udacity Data Engineer Nanodegree Program
 
-This python script allows extracting data, transforming it and loading it. The reuslt can be seen in this image:
+This python script allows extracting data, transforming it and loading it. The result can be seen in this image:
 
 ![S3_output](https://github.com/ablazleon/spark_data_lake/blob/master/S3_output.png)
 
