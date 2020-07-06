@@ -48,7 +48,7 @@ def process_song_data(spark, input_data, output_data):
                             where song_id IS NOT NULL """) 
     
     # write songs table to parquet files partitioned by year and artist
-     songs_schema_table.write.mode('overwrite').partitionBy("year", "artist_id").parquet(output_data+'songs_schema_table/')
+    songs_schema_table.write.mode('overwrite').partitionBy("year", "artist_id").parquet(output_data+'songs_schema_table/')
         
     # extract columns to create artists table
     artists_schema_table = spark.sql(""" select distinct a.artist_id, a.artist_name, a.artist_location, a.artist_latitude, a.artist_longitude from songs_table a where a.artist_id IS NOT NULL """)
@@ -104,11 +104,10 @@ def process_log_data(spark, input_data, output_data):
                 .load(os.path.join(output_data, "songs/*/*/"))
 
     # extract columns from joined song and log datasets to create songplays table 
-    songplays_table = df.join(song_df, df.song == song_df.title, how='inner')\                       .select(monotonically_increasing_id().alias("songplay_id"),col("start_time"),col("userId").alias("user_id"),"level","song_id","artist_id", col("sessionId").alias("session_id"), "location", col("userAgent").alias("user_agent"))
+    songplays_table = df.join(song_df, df.song == song_df.title, how='inner').select(monotonically_increasing_id().alias("songplay_id"),col("start_time"),col("userId").alias("user_id"),"level","song_id","artist_id", col("sessionId").alias("session_id"), "location", col("userAgent").alias("user_agent"))
 
-    songplays_table = songplays_table.join(time_table, songplays_table.start_time == time_table.start_time, how="inner")\
-                        .select("songplay_id", songplays_table.start_time, "user_id", "level", "song_id", "artist_id", "session_id", "location", "user_agent", "year", "month")
-
+    songplays_table = songplays_table.join(time_table, songplays_table.start_time == time_table.start_time, how="inner").select("songplay_id", songplays_table.start_time, "user_id", "level", "song_id", "artist_id", "session_id", "location", "user_agent", "year", "month")
+    
     # write songplays table to parquet files partitioned by year and month
     songplays_table.drop_duplicates().write.parquet(os.path.join(output_data, "songplays/"), mode="overwrite", partitionBy=["year","month"])
 
