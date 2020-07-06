@@ -8,6 +8,7 @@ from pyspark.sql.functions import year, month, dayofmonth, hour, weekofyear, dat
 
 config = configparser.ConfigParser()
 config.read('dl.cfg')
+print(config)
 
 os.environ['AWS_ACCESS_KEY_ID']=config['AWS_ACCESS_KEY_ID']
 os.environ['AWS_SECRET_ACCESS_KEY']=config['AWS_SECRET_ACCESS_KEY']
