@@ -46,7 +46,7 @@ Service logs are proposed to be stored in a db, so to access them easily: it is 
  After ssh to the cluster is done the following command:
  
  ```
- spark submit etl.py --master yarn
+ spark-submit etl.py --master yarn
  ```
 
 ## 2. State and justify your database schema design and ETL pipeline.
