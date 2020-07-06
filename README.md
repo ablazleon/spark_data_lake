@@ -36,6 +36,12 @@ Service logs are proposed to be stored in a db, so to access them easily: it is 
  1. First the songs and log data are extracted
  2. Then, it is used spark to transform the data in an schema 
  3. After that, the files are stored in parket files.
+ 
+ After ssh to the cluster is done the following command:
+ 
+ ```
+ spark submit etl.py --master yarn
+ ```
 
 ## 2. State and justify your database schema design and ETL pipeline.
 
