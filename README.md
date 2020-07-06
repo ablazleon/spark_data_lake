@@ -8,6 +8,10 @@ This python script allows extracting data, transforming it and loading it. The r
 
 ![S3_output](https://github.com/ablazleon/spark_data_lake/blob/master/S3_output.png)
 
+And the spark logs submiting the spark job to an emr cluster on a wsl:
+
+![Spark_logs](https://github.com/ablazleon/spark_data_lake/blob/master/Spark_logs.png)
+
 
 ## Rubric
 ## 1. Discuss the purpose of this database in the context of the startup, Sparkify, and their analytical goals.
